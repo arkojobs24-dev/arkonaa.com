@@ -74,8 +74,8 @@
   .ticker-wrap::before { left: 0; background: linear-gradient(to right, var(--black), transparent); }
   .ticker-wrap::after { right: 0; background: linear-gradient(to left, var(--black), transparent); }
   .ticker { display: flex; gap: 0; animation: ticker 22s linear infinite; width: max-content; }
-  .ticker-item { display: flex; align-items: center; gap: 48px; padding: 0 48px; font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; color: var(--faint); white-space: nowrap; transition: color 0.3s; letter-spacing: 0.05em; }
-  .ticker-item:hover { color: var(--muted); }
+  .ticker-item { display: flex; align-items: center; gap: 48px; padding: 0 48px; font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 700; color: rgba(240,237,232,0.85); white-space: nowrap; transition: color 0.3s; letter-spacing: 0.05em; }
+  .ticker-item:hover { color: var(--gold); }
   .ticker-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold-dim); flex-shrink: 0; }
   #portfolio { padding: 140px 48px; background: var(--deep); border-top: 1px solid var(--border); }
   .portfolio-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 72px; }
@@ -123,7 +123,15 @@
   @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
+  nav { padding:22px 32px; } #hero { padding:0 32px; }
+  #about, #contact { padding:100px 32px; gap:48px; }
+  #services, #portfolio, #clients { padding:100px 32px; }
+  .services-grid { grid-template-columns:repeat(2,1fr); }
+  .works-grid { grid-template-columns:repeat(2,1fr); gap:14px; }
+  .brandbar-inner { gap:20px; justify-content:center; } .brandbar-item { font-size:17px; }
+}
+@media (max-width: 768px) {
     nav { padding: 20px 24px; } .nav-links { display: none; }
     #hero { padding: 0 24px; } .hero-scroll { display: none; }
     #about, #contact { padding: 80px 24px; grid-template-columns: 1fr; gap: 48px; }
@@ -134,7 +142,14 @@
     .portfolio-card:first-child { grid-row: auto; aspect-ratio: 16/10; }
     footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24px; }
     .portfolio-header { flex-direction: column; align-items: flex-start; gap: 20px; }
-  }
+  
+  .brandbar { padding:28px 24px; } .brandbar-inner { gap:14px 24px; } .brandbar-item { font-size:15px; }
+  .works-grid { grid-template-columns:1fr; gap:14px; } .work-card { aspect-ratio:4/5; border-radius:12px; } .work-title { font-size:24px; }
+  body { cursor:auto; } #cursor, #cursor-ring { display:none; }
+  .hero-name { font-size:clamp(54px,15vw,90px); }
+  .hero-cta { flex-wrap:wrap; } .btn-primary, .btn-outline { width:100%; text-align:center; }
+  .ticker-item { font-size:24px; }
+}
 
 /* === NEW DESIGN: bold grotesque + accents === */
 .hero-name, .section-title, .service-title, .portfolio-title, .form-title, .stat-number, .nav-logo, .footer-logo { font-family:'Archivo',sans-serif !important; font-weight:900 !important; font-style:normal !important; letter-spacing:-0.02em; }
@@ -152,6 +167,23 @@
 .service-card:nth-child(3n+3) .service-num { color:var(--accent2); }
 .stat:nth-child(2) .stat-number { color:var(--accent2); }
 .stat:nth-child(3) .stat-number { color:var(--accent3); }
+
+.brandbar { padding:36px 48px; border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:var(--deep); }
+.brandbar-inner { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:32px; max-width:1200px; margin:0 auto; }
+.brandbar-item { font-family:'Archivo',sans-serif; font-weight:800; font-size:20px; letter-spacing:0.04em; color:#ffffff; opacity:0.92; text-transform:uppercase; transition:color .3s,opacity .3s; }
+.brandbar-item:hover { color:var(--gold); opacity:1; }
+
+.works-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.work-card { position:relative; overflow:hidden; aspect-ratio:3/4; border-radius:14px; text-decoration:none; background:var(--carbon); display:block; }
+.work-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .6s ease; }
+.work-card:hover .work-img { transform:scale(1.06); }
+.work-overlay { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:28px; background:linear-gradient(to top, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.25) 45%, transparent 75%); transition:padding .4s; }
+.work-card:hover .work-overlay { padding-bottom:34px; }
+.work-tag { font-family:'Space Mono',monospace; font-size:9px; letter-spacing:0.28em; color:var(--gold); text-transform:uppercase; margin-bottom:10px; }
+.work-title { font-family:'Archivo',sans-serif; font-weight:900; font-size:26px; text-transform:uppercase; color:#fff; line-height:1; }
+.work-desc { margin-top:8px; font-size:12px; color:var(--muted); }
+.work-arrow { position:absolute; top:18px; right:18px; width:38px; height:38px; border-radius:50%; background:rgba(8,8,8,0.55); display:flex; align-items:center; justify-content:center; color:#fff; font-size:16px; opacity:0; transform:translateY(-6px); transition:all .4s; }
+.work-card:hover .work-arrow { opacity:1; transform:translateY(0); }
 </style>
 </head>
 <body>
@@ -180,6 +212,7 @@
   </div>
   <div class="hero-scroll"><div class="scroll-line"></div><span>Scroll</span></div>
 </section>
+<div class="brandbar"><div class="brandbar-inner"><span class="brandbar-item">Reebok</span><span class="brandbar-item">Nike</span><span class="brandbar-item">Hyundai</span><span class="brandbar-item">L’Oréal Paris</span><span class="brandbar-item">HeadHunter</span></div></div>
 <section id="about">
   <div class="about-text reveal">
     <p class="section-label">About</p>
@@ -234,23 +267,14 @@
     <div class="reveal"><p class="section-label">Portfolio</p><h2 class="section-title">Two worlds,<br>one <em>vision</em></h2></div>
     <a href="https://www.instagram.com/arkonafactory" target="_blank" class="btn-outline reveal" style="white-space:nowrap">View All Work ↗</a>
   </div>
-  <div class="portfolio-grid">
-    <a href="https://www.instagram.com/arkonafactory" target="_blank" class="portfolio-card reveal">
-      <div class="portfolio-bg portfolio-bg-1"></div>
-      <div class="portfolio-arrow">↗</div>
-      <div class="portfolio-card-inner"><div class="portfolio-tag">AI Creative · Art Direction</div><div class="portfolio-title">ARKONA<br>Factory</div><div class="portfolio-desc">@arkonafactory — AI-визуалы, нейро-арт и креативные концепции</div></div>
-    </a>
-    <a href="https://www.instagram.com/arkomotion" target="_blank" class="portfolio-card reveal" style="transition-delay:0.15s">
-      <div class="portfolio-bg portfolio-bg-2"></div>
-      <div class="portfolio-arrow">↗</div>
-      <div class="portfolio-card-inner"><div class="portfolio-tag">Motion · Cinema · Drone</div><div class="portfolio-title">ARKO<br>Motion</div><div class="portfolio-desc">@arkomotion — видеопродакшн, моушн-дизайн, аэросъёмка</div></div>
-    </a>
-    <div class="portfolio-card reveal" style="transition-delay:0.3s; cursor:default;">
-      <div class="portfolio-bg portfolio-bg-3"></div>
-      <div class="portfolio-card-inner"><div class="portfolio-tag">Coming Soon</div><div class="portfolio-title">Showreel<br>2025</div><div class="portfolio-desc">Видеомонтаж · Моушн · Аэросъёмка — полный рилз скоро</div></div>
-    </div>
-  </div>
-</section>
+  <div class="works-grid">
+<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal"><img class="work-img" src="touch.jpg" alt="TOUCH" loading="lazy"><div class="work-overlay"><div class="work-tag">AI Creative · Film</div><div class="work-title">TOUCH</div><div class="work-desc">Video 002 — directed by ARKO</div></div><div class="work-arrow">↗</div></a>
+<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal" style="transition-delay:0.08s"><img class="work-img" src="gentle-earth-whale.jpg" alt="GENTLE EARTH" loading="lazy"><div class="work-overlay"><div class="work-tag">Concept Film</div><div class="work-title">GENTLE EARTH</div><div class="work-desc">From warm to white — AI &amp; soul</div></div><div class="work-arrow">↗</div></a>
+<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal" style="transition-delay:0.16s"><img class="work-img" src="feather-yarn.jpg" alt="FEATHER &amp; YARN" loading="lazy"><div class="work-overlay"><div class="work-tag">AI Creative</div><div class="work-title">FEATHER &amp; YARN</div><div class="work-desc">Character-driven neuro-visual</div></div><div class="work-arrow">↗</div></a>
+<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal" style="transition-delay:0.24s"><img class="work-img" src="crystal-horse.jpg" alt="GARNET" loading="lazy"><div class="work-overlay"><div class="work-tag">Art Direction</div><div class="work-title">GARNET</div><div class="work-desc">Couture AI craft — detail study</div></div><div class="work-arrow">↗</div></a>
+<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal" style="transition-delay:0.32s"><img class="work-img" src="aviator.jpg" alt="THE AVIATOR" loading="lazy"><div class="work-overlay"><div class="work-tag">Cinematic · AI</div><div class="work-title">THE AVIATOR</div><div class="work-desc">Retro-futuristic portrait film</div></div><div class="work-arrow">↗</div></a>
+<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal" style="transition-delay:0.40s"><img class="work-img" src="gentle-earth-fur.jpg" alt="GENTLE EARTH II" loading="lazy"><div class="work-overlay"><div class="work-tag">Fashion · AI</div><div class="work-title">GENTLE EARTH II</div><div class="work-desc">Texture &amp; motion in the wind</div></div><div class="work-arrow">↗</div></a>
+</div></section>
 <section id="contact">
   <div class="contact-text reveal">
     <p class="section-label">Contact</p>
