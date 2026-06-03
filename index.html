@@ -5,16 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ARKO — Creative Director & Neuro-Creator</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;500;700;800&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
     --black: #080808; --deep: #0d0d0d; --carbon: #141414; --surface: #1a1a1a;
-    --border: rgba(255,255,255,0.07); --gold: #c9a84c; --gold-dim: #8a6f32;
-    --gold-glow: rgba(201,168,76,0.15); --white: #f0ede8;
+    --border: rgba(255,255,255,0.07); --gold: #3B4FE4; --gold-dim: #2433a8;
+    --gold-glow: rgba(59,79,228,0.15); --accent2: #8B5CF6; --accent3: #F5A623; --white: #f0ede8;
     --muted: rgba(240,237,232,0.45); --faint: rgba(240,237,232,0.15);
   }
   html { scroll-behavior: smooth; }
-  body { background: var(--black); color: var(--white); font-family: 'Syne', sans-serif; cursor: none; overflow-x: hidden; }
+  body { background: var(--black); color: var(--white); font-family: 'Archivo', sans-serif; cursor: none; overflow-x: hidden; }
   #cursor { position: fixed; width: 10px; height: 10px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: transform 0.1s, width 0.3s, height 0.3s, opacity 0.3s; mix-blend-mode: difference; }
   #cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid var(--gold); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: transform 0.18s ease, width 0.3s, height 0.3s, opacity 0.3s; opacity: 0.5; }
   body::before { content: ''; position: fixed; inset: 0; z-index: 1; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; opacity: 0.4; }
@@ -26,7 +27,7 @@
   .nav-links a { color: var(--muted); text-decoration: none; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; transition: color 0.3s; }
   .nav-links a:hover { color: var(--gold); }
   #hero { position: relative; min-height: 100vh; display: flex; align-items: center; padding: 0 48px; overflow: hidden; }
-  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 70% 50%, rgba(201,168,76,0.06) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 60%); }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 70% 50%, rgba(59,79,228,0.06) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 20% 80%, rgba(59,79,228,0.04) 0%, transparent 60%); }
   .hero-lines { position: absolute; inset: 0; overflow: hidden; }
   .hero-lines::before { content: ''; position: absolute; top: 0; right: 24%; width: 1px; height: 100%; background: linear-gradient(to bottom, transparent, var(--gold-dim), transparent); opacity: 0.3; }
   .hero-content { position: relative; z-index: 2; max-width: 900px; }
@@ -85,7 +86,7 @@
   .portfolio-card:hover .portfolio-card-inner { transform: translateY(0); }
   .portfolio-bg { position: absolute; inset: 0; background: var(--surface); transition: transform 0.6s ease; }
   .portfolio-card:hover .portfolio-bg { transform: scale(1.04); }
-  .portfolio-bg-1 { background: radial-gradient(ellipse at 30% 40%, rgba(201,168,76,0.12) 0%, transparent 60%), linear-gradient(135deg, #1a1410 0%, #0d0d0d 100%); }
+  .portfolio-bg-1 { background: radial-gradient(ellipse at 30% 40%, rgba(59,79,228,0.12) 0%, transparent 60%), linear-gradient(135deg, #1a1410 0%, #0d0d0d 100%); }
   .portfolio-bg-2 { background: radial-gradient(ellipse at 70% 60%, rgba(100,120,201,0.1) 0%, transparent 60%), linear-gradient(135deg, #0d1018 0%, #080808 100%); }
   .portfolio-bg-3 { background: radial-gradient(ellipse at 50% 30%, rgba(201,76,76,0.08) 0%, transparent 60%), linear-gradient(135deg, #180d0d 0%, #080808 100%); }
   .portfolio-tag { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
@@ -134,6 +135,23 @@
     footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24px; }
     .portfolio-header { flex-direction: column; align-items: flex-start; gap: 20px; }
   }
+
+/* === NEW DESIGN: bold grotesque + accents === */
+.hero-name, .section-title, .service-title, .portfolio-title, .form-title, .stat-number, .nav-logo, .footer-logo { font-family:'Archivo',sans-serif !important; font-weight:900 !important; font-style:normal !important; letter-spacing:-0.02em; }
+.hero-name em, .section-title em { font-style:normal !important; }
+.hero-name { text-transform:uppercase; line-height:0.9; font-size:clamp(70px,11vw,150px); }
+.section-title { text-transform:uppercase; line-height:0.95; }
+.service-title, .portfolio-title { text-transform:uppercase; font-weight:800 !important; font-size:24px; }
+.about-desc, .contact-desc { font-family:'Archivo',sans-serif; }
+.nav-links a { font-family:'Archivo',sans-serif; font-weight:600; }
+.btn-primary, .btn-outline { border-radius:40px; font-family:'Archivo',sans-serif; font-weight:700; padding:18px 44px; background:var(--gold); color:#fff; border:1px solid var(--gold); }
+.btn-primary:hover { background:#fff; color:#080808; }
+.btn-outline:hover { background:var(--accent2); border-color:var(--accent2); color:#fff; }
+.form-submit { border-radius:40px; font-family:'Archivo',sans-serif; font-weight:700; }
+.service-card:nth-child(3n+2) .service-num { color:var(--accent3); }
+.service-card:nth-child(3n+3) .service-num { color:var(--accent2); }
+.stat:nth-child(2) .stat-number { color:var(--accent2); }
+.stat:nth-child(3) .stat-number { color:var(--accent3); }
 </style>
 </head>
 <body>
@@ -153,7 +171,7 @@
   <div class="hero-lines"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">Creative Director · Neuro-Creator · Bali</p>
-    <h1 class="hero-name">AR<em>KO</em><br>NA</h1>
+    <h1 class="hero-name">ARKONA<br><em style="color:#3B4FE4">FACTORY</em></h1>
     <p class="hero-tagline"><strong>Film Director · Motion Designer</strong><br>AI Creative · Art Director<br>Aerial Cinematographer</p>
     <div class="hero-cta">
       <a href="#portfolio" class="btn-primary">View Work</a>
