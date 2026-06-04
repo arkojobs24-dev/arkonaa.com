@@ -149,6 +149,8 @@
   .hero-name { font-size:clamp(54px,15vw,90px); }
   .hero-cta { flex-wrap:wrap; } .btn-primary, .btn-outline { width:100%; text-align:center; }
   .ticker-item { font-size:24px; }
+
+  .logo-track { gap:54px; animation-duration:20s; } .logo-img { height:24px; } .logo-text { font-size:19px; } .logobar { padding:26px 0; }
 }
 
 /* === NEW DESIGN: bold grotesque + accents === */
@@ -184,6 +186,17 @@
 .work-desc { margin-top:8px; font-size:12px; color:var(--muted); }
 .work-arrow { position:absolute; top:18px; right:18px; width:38px; height:38px; border-radius:50%; background:rgba(8,8,8,0.55); display:flex; align-items:center; justify-content:center; color:#fff; font-size:16px; opacity:0; transform:translateY(-6px); transition:all .4s; }
 .work-card:hover .work-arrow { opacity:1; transform:translateY(0); }
+
+.logobar { position:relative; overflow:hidden; padding:34px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:var(--deep); }
+.logobar-fade { position:absolute; inset:0; z-index:2; pointer-events:none; background:linear-gradient(to right, var(--deep) 0%, transparent 12%, transparent 88%, var(--deep) 100%); }
+.logo-track { display:flex; align-items:center; width:max-content; gap:90px; animation:logoscroll 28s linear infinite; }
+.logobar:hover .logo-track { animation-play-state:paused; }
+.logo-item { display:flex; align-items:center; justify-content:center; flex:0 0 auto; height:34px; }
+.logo-img { height:30px; width:auto; filter:brightness(0) invert(1); opacity:0.78; transition:opacity .3s; }
+.logo-item:hover .logo-img { opacity:1; }
+.logo-text { font-family:'Archivo',sans-serif; font-weight:800; font-size:24px; letter-spacing:0.02em; color:#fff; opacity:0.82; white-space:nowrap; transition:opacity .3s; }
+.logo-item:hover .logo-text { opacity:1; }
+@keyframes logoscroll { from { transform:translateX(0); } to { transform:translateX(-50%); } }
 </style>
 </head>
 <body>
@@ -212,7 +225,20 @@
   </div>
   <div class="hero-scroll"><div class="scroll-line"></div><span>Scroll</span></div>
 </section>
-<div class="brandbar"><div class="brandbar-inner"><span class="brandbar-item">Reebok</span><span class="brandbar-item">Nike</span><span class="brandbar-item">Hyundai</span><span class="brandbar-item">L’Oréal Paris</span><span class="brandbar-item">HeadHunter</span></div></div>
+<div class="logobar"><div class="logobar-fade"></div><div class="logo-track"><span class="logo-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/nike.svg" alt="Nike" class="logo-img"></span><span class="logo-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/reebok.svg" alt="Reebok" class="logo-img"></span><span class="logo-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/hyundai.svg" alt="Hyundai" class="logo-img"></span><span class="logo-item"><span class="logo-text">L’Oréal Paris</span></span><span class="logo-item"><span class="logo-text">HeadHunter</span></span><span class="logo-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/nike.svg" alt="Nike" class="logo-img"></span><span class="logo-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/reebok.svg" alt="Reebok" class="logo-img"></span><span class="logo-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/hyundai.svg" alt="Hyundai" class="logo-img"></span><span class="logo-item"><span class="logo-text">L’Oréal Paris</span></span><span class="logo-item"><span class="logo-text">HeadHunter</span></span></div></div>
+<section id="portfolio">
+  <div class="portfolio-header">
+    <div class="reveal"><p class="section-label">Portfolio</p><h2 class="section-title">Two worlds,<br>one <em>vision</em></h2></div>
+    <a href="https://www.instagram.com/arkonafactory" target="_blank" class="btn-outline reveal" style="white-space:nowrap">View All Work ↗</a>
+  </div>
+  <div class="works-grid">
+<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal"><img class="work-img" src="touch.jpg" alt="TOUCH" loading="lazy"><div class="work-overlay"><div class="work-tag">AI Creative · Film</div><div class="work-title">TOUCH</div><div class="work-desc">Video 002 — directed by ARKO</div></div><div class="work-arrow">↗</div></a>
+<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal" style="transition-delay:0.08s"><img class="work-img" src="gentle-earth-whale.jpg" alt="GENTLE EARTH" loading="lazy"><div class="work-overlay"><div class="work-tag">Concept Film</div><div class="work-title">GENTLE EARTH</div><div class="work-desc">From warm to white — AI &amp; soul</div></div><div class="work-arrow">↗</div></a>
+<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal" style="transition-delay:0.16s"><img class="work-img" src="feather-yarn.jpg" alt="FEATHER &amp; YARN" loading="lazy"><div class="work-overlay"><div class="work-tag">AI Creative</div><div class="work-title">FEATHER &amp; YARN</div><div class="work-desc">Character-driven neuro-visual</div></div><div class="work-arrow">↗</div></a>
+<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal" style="transition-delay:0.24s"><img class="work-img" src="crystal-horse.jpg" alt="GARNET" loading="lazy"><div class="work-overlay"><div class="work-tag">Art Direction</div><div class="work-title">GARNET</div><div class="work-desc">Couture AI craft — detail study</div></div><div class="work-arrow">↗</div></a>
+<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal" style="transition-delay:0.32s"><img class="work-img" src="aviator.jpg" alt="THE AVIATOR" loading="lazy"><div class="work-overlay"><div class="work-tag">Cinematic · AI</div><div class="work-title">THE AVIATOR</div><div class="work-desc">Retro-futuristic portrait film</div></div><div class="work-arrow">↗</div></a>
+<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal" style="transition-delay:0.40s"><img class="work-img" src="gentle-earth-fur.jpg" alt="GENTLE EARTH II" loading="lazy"><div class="work-overlay"><div class="work-tag">Fashion · AI</div><div class="work-title">GENTLE EARTH II</div><div class="work-desc">Texture &amp; motion in the wind</div></div><div class="work-arrow">↗</div></a>
+</div></section>
 <section id="about">
   <div class="about-text reveal">
     <p class="section-label">About</p>
@@ -262,19 +288,7 @@
     </div>
   </div>
 </section>
-<section id="portfolio">
-  <div class="portfolio-header">
-    <div class="reveal"><p class="section-label">Portfolio</p><h2 class="section-title">Two worlds,<br>one <em>vision</em></h2></div>
-    <a href="https://www.instagram.com/arkonafactory" target="_blank" class="btn-outline reveal" style="white-space:nowrap">View All Work ↗</a>
-  </div>
-  <div class="works-grid">
-<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal"><img class="work-img" src="touch.jpg" alt="TOUCH" loading="lazy"><div class="work-overlay"><div class="work-tag">AI Creative · Film</div><div class="work-title">TOUCH</div><div class="work-desc">Video 002 — directed by ARKO</div></div><div class="work-arrow">↗</div></a>
-<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal" style="transition-delay:0.08s"><img class="work-img" src="gentle-earth-whale.jpg" alt="GENTLE EARTH" loading="lazy"><div class="work-overlay"><div class="work-tag">Concept Film</div><div class="work-title">GENTLE EARTH</div><div class="work-desc">From warm to white — AI &amp; soul</div></div><div class="work-arrow">↗</div></a>
-<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal" style="transition-delay:0.16s"><img class="work-img" src="feather-yarn.jpg" alt="FEATHER &amp; YARN" loading="lazy"><div class="work-overlay"><div class="work-tag">AI Creative</div><div class="work-title">FEATHER &amp; YARN</div><div class="work-desc">Character-driven neuro-visual</div></div><div class="work-arrow">↗</div></a>
-<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal" style="transition-delay:0.24s"><img class="work-img" src="crystal-horse.jpg" alt="GARNET" loading="lazy"><div class="work-overlay"><div class="work-tag">Art Direction</div><div class="work-title">GARNET</div><div class="work-desc">Couture AI craft — detail study</div></div><div class="work-arrow">↗</div></a>
-<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal" style="transition-delay:0.32s"><img class="work-img" src="aviator.jpg" alt="THE AVIATOR" loading="lazy"><div class="work-overlay"><div class="work-tag">Cinematic · AI</div><div class="work-title">THE AVIATOR</div><div class="work-desc">Retro-futuristic portrait film</div></div><div class="work-arrow">↗</div></a>
-<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal" style="transition-delay:0.40s"><img class="work-img" src="gentle-earth-fur.jpg" alt="GENTLE EARTH II" loading="lazy"><div class="work-overlay"><div class="work-tag">Fashion · AI</div><div class="work-title">GENTLE EARTH II</div><div class="work-desc">Texture &amp; motion in the wind</div></div><div class="work-arrow">↗</div></a>
-</div></section>
+
 <section id="contact">
   <div class="contact-text reveal">
     <p class="section-label">Contact</p>
