@@ -69,10 +69,10 @@
   .service-desc { font-size: 13px; color: var(--muted); line-height: 1.8; letter-spacing: 0.02em; }
   #clients { padding: 100px 48px; border-top: 1px solid var(--border); overflow: hidden; }
   .clients-header { text-align: center; margin-bottom: 64px; }
-  .ticker-wrap { overflow: hidden; position: relative; }
-  .ticker-wrap::before, .ticker-wrap::after { content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; }
-  .ticker-wrap::before { left: 0; background: linear-gradient(to right, var(--black), transparent); }
-  .ticker-wrap::after { right: 0; background: linear-gradient(to left, var(--black), transparent); }
+  . { overflow: hidden; position: relative; }
+  .::before, .::after { content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; }
+  .::before { left: 0; background: linear-gradient(to right, var(--black), transparent); }
+  .::after { right: 0; background: linear-gradient(to left, var(--black), transparent); }
   .ticker { display: flex; gap: 0; animation: ticker 22s linear infinite; width: max-content; }
     .ticker-item { display:inline-flex; align-items:center; gap:14px; padding:0 40px; font-family:'Archivo', sans-serif; font-size:24px; font-weight:800; color:var(--white); white-space:nowrap; transition:opacity 0.3s; letter-spacing:0.01em; }
   .ticker-item:hover { opacity: 1; }
