@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ARKO Ã¢ÂÂ Creative Director & Neuro-Creator</title>
+<title>ARKO — Creative Director & Neuro-Creator</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;500;700;800&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -144,7 +144,10 @@
   .brandbar-inner { gap:20px; justify-content:center; } .brandbar-item { font-size:17px; }
 }
 @media (max-width: 768px) {
-    nav { padding: 20px 24px; } .nav-links { display: none; }
+    nav { padding: 20px 24px; }
+    .nav-links { display: none; position:absolute; top:100%; left:0; right:0; flex-direction:column; align-items:flex-start; background:#0a0a0a; padding:24px 32px; gap:20px; border-bottom:1px solid var(--border); }
+    .nav-links.open { display:flex; }
+    .nav-burger { display:flex; }
     #hero { padding: 0 24px; } .hero-scroll { display: none; }
     #about, #contact { padding: 80px 24px; grid-template-columns: 1fr; gap: 48px; }
     .about-stats { grid-template-columns: 1fr 1fr; }
@@ -211,6 +214,14 @@
 .logo-text { font-family:'Archivo',sans-serif; font-weight:800; font-size:24px; letter-spacing:0.02em; color:#fff; opacity:0.82; white-space:nowrap; transition:opacity .3s; }
 .logo-item:hover .logo-text { opacity:1; }
 @keyframes logoscroll { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+    /* Language switcher + mobile burger */
+    .lang-switch { display:flex; align-items:center; gap:6px; margin-left:18px; }
+    .lang-btn { background:none; border:none; color:inherit; font:inherit; font-size:12px; letter-spacing:0.08em; cursor:pointer; opacity:0.45; text-transform:uppercase; padding:2px; transition:opacity .2s,color .2s; }
+    .lang-btn.active { opacity:1; color:#3B4FE4; }
+    .lang-btn:hover { opacity:0.8; }
+    .nav-burger { display:none; background:none; border:none; cursor:pointer; flex-direction:column; gap:5px; padding:6px; margin-left:8px; }
+    .nav-burger span { width:24px; height:2px; background:var(--white); display:block; transition:.3s; }
+    @media (max-width:768px){ .lang-switch { position:absolute; top:22px; right:66px; margin:0; } }
 </style>
 </head>
 <body>
@@ -219,26 +230,28 @@
 <nav id="nav">
   <a href="#" class="nav-logo">ARK<span>O</span></a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#showreel">Showreel</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about" data-en="About" data-ru="О себе">About</a></li>
+    <li><a href="#services" data-en="Services" data-ru="Услуги">Services</a></li>
+    <li><a href="#portfolio" data-en="Portfolio" data-ru="Портфолио">Portfolio</a></li>
+    <li><a href="#showreel" data-en="Showreel" data-ru="Шоурил">Showreel</a></li>
+    <li><a href="#contact" data-en="Contact" data-ru="Контакты">Contact</a></li>
   </ul>
+  <div class="lang-switch"><button class="lang-btn" data-lang="en">EN</button><span style="opacity:.3">/</span><button class="lang-btn" data-lang="ru">RU</button></div>
+  <button class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-lines"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Creative Director ÃÂ· Neuro-Creator ÃÂ· Bali</p>
+<p class="hero-eyebrow" data-en="Creative Director · Neuro-Creator · Bali" data-ru="Креативный директор · Нейро-креатор · Бали">Creative Director · Neuro-Creator · Bali</p>
     <h1 class="hero-name">ARKONA<br><em style="color:#3B4FE4">FACTORY</em></h1>
-    <p class="hero-tagline"><strong>Film Director ÃÂ· Motion Designer</strong><br>AI Creative ÃÂ· Art Director<br>Aerial Cinematographer</p>
+<p class="hero-tagline" data-en="<strong>Film Director · Motion Designer</strong><br>AI Creative · Art Director<br>Aerial Cinematographer" data-ru="<strong>Режиссёр · Моушн-дизайнер</strong><br>AI-креатор · Арт-директор<br>Аэросъёмка"><strong>Film Director · Motion Designer</strong><br>AI Creative · Art Director<br>Aerial Cinematographer</p>
     <div class="hero-cta">
-      <a href="#portfolio" class="btn-primary">View Work</a>
-      <a href="#contact" class="btn-outline">Get in Touch</a>
+<a href="#portfolio" class="btn-primary" data-en="View Work" data-ru="Смотреть работы">View Work</a>
+<a href="#contact" class="btn-outline" data-en="Get in Touch" data-ru="Связаться">Get in Touch</a>
     </div>
   </div>
-  <div class="hero-scroll"><div class="scroll-line"></div><span>Scroll</span></div>
+  <div class="hero-scroll"><div class="scroll-line"></div><span data-en="Scroll" data-ru="Листай">Scroll</span></div>
 </section>
 <div class="ticker-wrap">
     <div class="ticker">
@@ -268,22 +281,22 @@
 
   <div class="names-wrap">
     <div class="names-ticker">
-      <div class="name-item">Reebok</div><div class="name-item">Nike</div><div class="name-item">hh</div><div class="name-item">Hyundai</div><div class="name-item">Profi</div><div class="name-item">Amway</div><div class="name-item">TOUS</div><div class="name-item">KYNSI</div><div class="name-item">Barni</div><div class="name-item">ÃÂ¡ÃÂ±ÃÂµÃÂ</div>
-      <div class="name-item">Reebok</div><div class="name-item">Nike</div><div class="name-item">hh</div><div class="name-item">Hyundai</div><div class="name-item">Profi</div><div class="name-item">Amway</div><div class="name-item">TOUS</div><div class="name-item">KYNSI</div><div class="name-item">Barni</div><div class="name-item">ÃÂ¡ÃÂ±ÃÂµÃÂ</div>
+      <div class="name-item">Reebok</div><div class="name-item">Nike</div><div class="name-item">hh</div><div class="name-item">Hyundai</div><div class="name-item">Profi</div><div class="name-item">Amway</div><div class="name-item">TOUS</div><div class="name-item">KYNSI</div><div class="name-item">Barni</div><div class="name-item">СБЕР</div>
+      <div class="name-item">Reebok</div><div class="name-item">Nike</div><div class="name-item">hh</div><div class="name-item">Hyundai</div><div class="name-item">Profi</div><div class="name-item">Amway</div><div class="name-item">TOUS</div><div class="name-item">KYNSI</div><div class="name-item">Barni</div><div class="name-item">СБЕР</div>
     </div>
   </div>
 <section id="portfolio">
   <div class="portfolio-header">
-    <div class="reveal"><p class="section-label">Portfolio</p><h2 class="section-title">Two worlds,<br>one <em>vision</em></h2></div>
-    <a href="https://www.instagram.com/arkonafactory" target="_blank" class="btn-outline reveal" style="white-space:nowrap">View All Work Ã¢ÂÂ</a>
+    <div class="reveal"><p class="section-label" data-en="Portfolio" data-ru="Портфолио">Portfolio</p><h2 class="section-title" data-en="Two worlds,<br>one <em>vision</em>" data-ru="Два мира,<br>одно <em>видение</em>">Two worlds,<br>one <em>vision</em></h2></div>
+    <a href="https://www.instagram.com/arkonafactory" target="_blank" class="btn-outline reveal" style="white-space:nowrap" data-en="View All Work →" data-ru="Все работы →">View All Work →</a>
   </div>
   <div class="works-grid">
-<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal"><img class="work-img" src="touch.jpg" alt="TOUCH" loading="lazy"><div class="work-overlay"><div class="work-tag">AI Creative ÃÂ· Film</div><div class="work-title">TOUCH</div><div class="work-desc">Video 002 Ã¢ÂÂ directed by ARKO</div></div><div class="work-arrow">Ã¢ÂÂ</div></a>
-<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal" style="transition-delay:0.08s"><img class="work-img" src="gentle-earth-whale.jpg" alt="GENTLE EARTH" loading="lazy"><div class="work-overlay"><div class="work-tag">Concept Film</div><div class="work-title">GENTLE EARTH</div><div class="work-desc">From warm to white Ã¢ÂÂ AI &amp; soul</div></div><div class="work-arrow">Ã¢ÂÂ</div></a>
-<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal" style="transition-delay:0.16s"><img class="work-img" src="feather-yarn.jpg" alt="FEATHER &amp; YARN" loading="lazy"><div class="work-overlay"><div class="work-tag">AI Creative</div><div class="work-title">FEATHER &amp; YARN</div><div class="work-desc">Character-driven neuro-visual</div></div><div class="work-arrow">Ã¢ÂÂ</div></a>
-<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal" style="transition-delay:0.24s"><img class="work-img" src="crystal-horse.jpg" alt="GARNET" loading="lazy"><div class="work-overlay"><div class="work-tag">Art Direction</div><div class="work-title">GARNET</div><div class="work-desc">Couture AI craft Ã¢ÂÂ detail study</div></div><div class="work-arrow">Ã¢ÂÂ</div></a>
-<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal" style="transition-delay:0.32s"><img class="work-img" src="aviator.jpg" alt="THE AVIATOR" loading="lazy"><div class="work-overlay"><div class="work-tag">Cinematic ÃÂ· AI</div><div class="work-title">THE AVIATOR</div><div class="work-desc">Retro-futuristic portrait film</div></div><div class="work-arrow">Ã¢ÂÂ</div></a>
-<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal" style="transition-delay:0.40s"><img class="work-img" src="gentle-earth-fur.jpg" alt="GENTLE EARTH II" loading="lazy"><div class="work-overlay"><div class="work-tag">Fashion ÃÂ· AI</div><div class="work-title">GENTLE EARTH II</div><div class="work-desc">Texture &amp; motion in the wind</div></div><div class="work-arrow">Ã¢ÂÂ</div></a>
+<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal"><img class="work-img" src="touch.jpg" alt="TOUCH" loading="lazy"><div class="work-overlay"><div class="work-tag" data-en="AI Creative · Film" data-ru="AI-креатив · Кино">AI Creative · Film</div><div class="work-title">TOUCH</div><div class="work-desc" data-en="Video 002 — directed by ARKO" data-ru="Видео 002 — режиссёр ARKO">Video 002 — directed by ARKO</div></div><div class="work-arrow">→</div></a>
+<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal" style="transition-delay:0.08s"><img class="work-img" src="gentle-earth-whale.jpg" alt="GENTLE EARTH" loading="lazy"><div class="work-overlay"><div class="work-tag" data-en="Concept Film" data-ru="Концепт-фильм">Concept Film</div><div class="work-title">GENTLE EARTH</div><div class="work-desc" data-en="From warm to white — AI & soul" data-ru="От тепла к свету — AI и душа">From warm to white — AI & soul</div></div><div class="work-arrow">→</div></a>
+<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal" style="transition-delay:0.16s"><img class="work-img" src="feather-yarn.jpg" alt="FEATHER &amp; YARN" loading="lazy"><div class="work-overlay"><div class="work-tag" data-en="AI Creative" data-ru="AI-креатив">AI Creative</div><div class="work-title">FEATHER &amp; YARN</div><div class="work-desc" data-en="Character-driven neuro-visual" data-ru="Нейро-визуал с характером">Character-driven neuro-visual</div></div><div class="work-arrow">→</div></a>
+<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal" style="transition-delay:0.24s"><img class="work-img" src="crystal-horse.jpg" alt="GARNET" loading="lazy"><div class="work-overlay"><div class="work-tag" data-en="Art Direction" data-ru="Арт-дирекшн">Art Direction</div><div class="work-title">GARNET</div><div class="work-desc" data-en="Couture AI craft — detail study" data-ru="Кутюрный AI-крафт — детали">Couture AI craft — detail study</div></div><div class="work-arrow">→</div></a>
+<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal" style="transition-delay:0.32s"><img class="work-img" src="aviator.jpg" alt="THE AVIATOR" loading="lazy"><div class="work-overlay"><div class="work-tag" data-en="Cinematic · AI" data-ru="Кино · AI">Cinematic · AI</div><div class="work-title">THE AVIATOR</div><div class="work-desc" data-en="Retro-futuristic portrait film" data-ru="Ретрофутуристичный портрет">Retro-futuristic portrait film</div></div><div class="work-arrow">→</div></a>
+<a href="https://www.instagram.com/arkonafactory" target="_blank" class="work-card reveal" style="transition-delay:0.40s"><img class="work-img" src="gentle-earth-fur.jpg" alt="GENTLE EARTH II" loading="lazy"><div class="work-overlay"><div class="work-tag" data-en="Fashion · AI" data-ru="Мода · AI">Fashion · AI</div><div class="work-title">GENTLE EARTH II</div><div class="work-desc" data-en="Texture & motion in the wind" data-ru="Текстура и движение на ветру">Texture & motion in the wind</div></div><div class="work-arrow">→</div></a>
 </div></section>
 
 <style id="showreel-styles">
@@ -339,12 +352,12 @@
 <section id="showreel">
   <div class="sr-aurora"><span></span><span></span><span></span></div>
   <div class="sr-head">
-    <p class="section-label">Showreel</p>
-    <h2 class="section-title sr-title-anim"><span class="ln">Работы, которые</span><span class="ln">хочется <em>досмотреть</em></span></h2>
-    <p class="sr-sub">Реклама, мультики, UGC и говорящие аватары — каждая работа сделана так, чтобы зацепить с первого кадра.</p>
+    <p class="section-label" data-en="Showreel" data-ru="Шоурил">Showreel</p>
+    <h2 class="section-title sr-title-anim" data-en="<span class='ln'>Works worth</span><span class='ln'>watching <em>to the end</em></span>" data-ru="<span class='ln'>Работы, которые</span><span class='ln'>хочется <em>досмотреть</em></span>"><span class="ln">Works worth</span><span class="ln">watching <em>to the end</em></span></h2>
+    <p class="sr-sub" data-en="Ads, animation, UGC and talking avatars — every piece is made to hook you from the very first frame." data-ru="Реклама, мультики, UGC и говорящие аватары — каждая работа сделана так, чтобы зацепить с первого кадра.">Ads, animation, UGC and talking avatars — every piece is made to hook you from the very first frame.</p>
   </div>
-  <div class="sr-filters"><button class="sr-tab active" data-filter="all">Все</button><button class="sr-tab" data-filter="rek">Реклама</button><button class="sr-tab" data-filter="mult">Мультики</button><button class="sr-tab" data-filter="ugc">UGC</button><button class="sr-tab" data-filter="avatar">Говорящий аватар</button></div>
-  <div class="sr-grid"><div class="sr-card reveal" data-cat="mult" style="animation-delay:0.00s"><div class="sr-bg" style="background-image:linear-gradient(135deg,#3B4FE4,#8B5CF6,#3B4FE4)"></div><div class="sr-shine"></div><div class="sr-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="sr-meta"><span class="sr-cat">Мультики</span><div class="sr-name">Animated Spot</div><div class="sr-desc">Сторителлинг-мультик для бренда</div></div></div><div class="sr-card reveal" data-cat="rek" style="animation-delay:0.07s"><div class="sr-bg" style="background-image:linear-gradient(135deg,#F5A623,#3B4FE4,#F5A623)"></div><div class="sr-shine"></div><div class="sr-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="sr-meta"><span class="sr-cat">Реклама</span><div class="sr-name">Product Reel</div><div class="sr-desc">Динамичная реклама с ИИ-графикой</div></div></div><div class="sr-card reveal" data-cat="avatar" style="animation-delay:0.14s"><div class="sr-bg" style="background-image:linear-gradient(135deg,#8B5CF6,#3B4FE4,#8B5CF6)"></div><div class="sr-shine"></div><div class="sr-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="sr-meta"><span class="sr-cat">Говорящий аватар</span><div class="sr-name">AI Presenter</div><div class="sr-desc">Говорящий аватар-ведущий</div></div></div><div class="sr-card reveal" data-cat="ugc" style="animation-delay:0.21s"><div class="sr-bg" style="background-image:linear-gradient(135deg,#3B4FE4,#0d0d0d,#3B4FE4)"></div><div class="sr-shine"></div><div class="sr-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="sr-meta"><span class="sr-cat">UGC</span><div class="sr-name">UGC Story</div><div class="sr-desc">Нативный UGC-ролик для соцсетей</div></div></div><div class="sr-card reveal" data-cat="mult" style="animation-delay:0.28s"><div class="sr-bg" style="background-image:linear-gradient(135deg,#F5A623,#8B5CF6,#F5A623)"></div><div class="sr-shine"></div><div class="sr-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="sr-meta"><span class="sr-cat">Мультики</span><div class="sr-name">Character Loop</div><div class="sr-desc">Зацикленный анимационный персонаж</div></div></div><div class="sr-card reveal" data-cat="rek" style="animation-delay:0.35s"><div class="sr-bg" style="background-image:linear-gradient(135deg,#3B4FE4,#141414,#3B4FE4)"></div><div class="sr-shine"></div><div class="sr-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="sr-meta"><span class="sr-cat">Реклама</span><div class="sr-name">Brand Film</div><div class="sr-desc">Кинематографичная рекламная история</div></div></div><div class="sr-card reveal" data-cat="avatar" style="animation-delay:0.42s"><div class="sr-bg" style="background-image:linear-gradient(135deg,#8B5CF6,#3B4FE4,#8B5CF6)"></div><div class="sr-shine"></div><div class="sr-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="sr-meta"><span class="sr-cat">Говорящий аватар</span><div class="sr-name">Spokesperson</div><div class="sr-desc">Цифровой аватар для презентаций</div></div></div><div class="sr-card reveal" data-cat="ugc" style="animation-delay:0.49s"><div class="sr-bg" style="background-image:linear-gradient(135deg,#F5A623,#0d0d0d,#F5A623)"></div><div class="sr-shine"></div><div class="sr-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="sr-meta"><span class="sr-cat">UGC</span><div class="sr-name">Review Clip</div><div class="sr-desc">UGC-отзыв в вертикальном формате</div></div></div><div class="sr-card reveal" data-cat="mult" style="animation-delay:0.56s"><div class="sr-bg" style="background-image:linear-gradient(135deg,#3B4FE4,#8B5CF6,#3B4FE4)"></div><div class="sr-shine"></div><div class="sr-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="sr-meta"><span class="sr-cat">Мультики</span><div class="sr-name">Explainer</div><div class="sr-desc">Объясняющий мультик-инфографика</div></div></div></div>
+  <div class="sr-filters"><button class="sr-tab active" data-filter="all" data-en="All" data-ru="Все">All</button><button class="sr-tab" data-filter="rek" data-en="Ads" data-ru="Реклама">Ads</button><button class="sr-tab" data-filter="mult" data-en="Animation" data-ru="Мультики">Animation</button><button class="sr-tab" data-filter="ugc" data-en="UGC" data-ru="UGC">UGC</button><button class="sr-tab" data-filter="avatar" data-en="Talking Avatar" data-ru="Говорящий аватар">Talking Avatar</button></div>
+  <div class="sr-grid"><div class="sr-card reveal" data-cat="mult" style="animation-delay:0.00s"><div class="sr-bg" style="background-image:linear-gradient(135deg,#3B4FE4,#8B5CF6,#3B4FE4)"></div><div class="sr-shine"></div><div class="sr-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="sr-meta"><span class="sr-cat" data-en="Animation" data-ru="Мультики">Animation</span><div class="sr-name">Animated Spot</div><div class="sr-desc" data-en="Storytelling animation for a brand" data-ru="Сторителлинг-мультик для бренда">Storytelling animation for a brand</div></div></div><div class="sr-card reveal" data-cat="rek" style="animation-delay:0.07s"><div class="sr-bg" style="background-image:linear-gradient(135deg,#F5A623,#3B4FE4,#F5A623)"></div><div class="sr-shine"></div><div class="sr-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="sr-meta"><span class="sr-cat" data-en="Ads" data-ru="Реклама">Ads</span><div class="sr-name">Product Reel</div><div class="sr-desc" data-en="Dynamic ad with AI graphics" data-ru="Динамичная реклама с ИИ-графикой">Dynamic ad with AI graphics</div></div></div><div class="sr-card reveal" data-cat="avatar" style="animation-delay:0.14s"><div class="sr-bg" style="background-image:linear-gradient(135deg,#8B5CF6,#3B4FE4,#8B5CF6)"></div><div class="sr-shine"></div><div class="sr-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="sr-meta"><span class="sr-cat" data-en="Talking Avatar" data-ru="Говорящий аватар">Talking Avatar</span><div class="sr-name">AI Presenter</div><div class="sr-desc" data-en="AI talking-avatar host" data-ru="Говорящий аватар-ведущий">AI talking-avatar host</div></div></div><div class="sr-card reveal" data-cat="ugc" style="animation-delay:0.21s"><div class="sr-bg" style="background-image:linear-gradient(135deg,#3B4FE4,#0d0d0d,#3B4FE4)"></div><div class="sr-shine"></div><div class="sr-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="sr-meta"><span class="sr-cat" data-en="UGC" data-ru="UGC">UGC</span><div class="sr-name">UGC Story</div><div class="sr-desc" data-en="Native UGC clip for social" data-ru="Нативный UGC-ролик для соцсетей">Native UGC clip for social</div></div></div><div class="sr-card reveal" data-cat="mult" style="animation-delay:0.28s"><div class="sr-bg" style="background-image:linear-gradient(135deg,#F5A623,#8B5CF6,#F5A623)"></div><div class="sr-shine"></div><div class="sr-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="sr-meta"><span class="sr-cat" data-en="Animation" data-ru="Мультики">Animation</span><div class="sr-name">Character Loop</div><div class="sr-desc" data-en="Looped animated character" data-ru="Зацикленный анимационный персонаж">Looped animated character</div></div></div><div class="sr-card reveal" data-cat="rek" style="animation-delay:0.35s"><div class="sr-bg" style="background-image:linear-gradient(135deg,#3B4FE4,#141414,#3B4FE4)"></div><div class="sr-shine"></div><div class="sr-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="sr-meta"><span class="sr-cat" data-en="Ads" data-ru="Реклама">Ads</span><div class="sr-name">Brand Film</div><div class="sr-desc" data-en="Cinematic brand story" data-ru="Кинематографичная рекламная история">Cinematic brand story</div></div></div><div class="sr-card reveal" data-cat="avatar" style="animation-delay:0.42s"><div class="sr-bg" style="background-image:linear-gradient(135deg,#8B5CF6,#3B4FE4,#8B5CF6)"></div><div class="sr-shine"></div><div class="sr-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="sr-meta"><span class="sr-cat" data-en="Talking Avatar" data-ru="Говорящий аватар">Talking Avatar</span><div class="sr-name">Spokesperson</div><div class="sr-desc" data-en="Digital avatar for presentations" data-ru="Цифровой аватар для презентаций">Digital avatar for presentations</div></div></div><div class="sr-card reveal" data-cat="ugc" style="animation-delay:0.49s"><div class="sr-bg" style="background-image:linear-gradient(135deg,#F5A623,#0d0d0d,#F5A623)"></div><div class="sr-shine"></div><div class="sr-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="sr-meta"><span class="sr-cat" data-en="UGC" data-ru="UGC">UGC</span><div class="sr-name">Review Clip</div><div class="sr-desc" data-en="UGC review in vertical format" data-ru="UGC-отзыв в вертикальном формате">UGC review in vertical format</div></div></div><div class="sr-card reveal" data-cat="mult" style="animation-delay:0.56s"><div class="sr-bg" style="background-image:linear-gradient(135deg,#3B4FE4,#8B5CF6,#3B4FE4)"></div><div class="sr-shine"></div><div class="sr-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="sr-meta"><span class="sr-cat" data-en="Animation" data-ru="Мультики">Animation</span><div class="sr-name">Explainer</div><div class="sr-desc" data-en="Explainer infographic animation" data-ru="Объясняющий мультик-инфографика">Explainer infographic animation</div></div></div></div>
 </section>
 <script id="showreel-js">
 (function(){
@@ -362,37 +375,37 @@
 </script>
 <section id="about">
   <div class="about-text reveal">
-    <p class="section-label">About</p>
-    <h2 class="section-title">Where <em>cinema</em><br>meets technology</h2>
-    <p class="about-desc">ÃÂ ÃÂµÃÂ¶ÃÂ¸ÃÂÃÂÃÂÃÂ ÃÂ¿ÃÂ¾ ÃÂ¾ÃÂ±ÃÂÃÂ°ÃÂ·ÃÂ¾ÃÂ²ÃÂ°ÃÂ½ÃÂ¸ÃÂ. <strong>ÃÂÃÂ¸ÃÂ·ÃÂÃÂ°ÃÂ»ÃÂÃÂ½ÃÂÃÂ¹ ÃÂ°ÃÂÃÂÃÂ¸ÃÂÃÂµÃÂºÃÂÃÂ¾ÃÂ</strong> ÃÂ¿ÃÂ¾ ÃÂ¿ÃÂÃÂ¸ÃÂ·ÃÂ²ÃÂ°ÃÂ½ÃÂ¸ÃÂ. ÃÂ ÃÂ°ÃÂ±ÃÂ¾ÃÂÃÂ°ÃÂ ÃÂ½ÃÂ° ÃÂÃÂÃÂÃÂºÃÂµ ÃÂºÃÂ¸ÃÂ½ÃÂµÃÂ¼ÃÂ°ÃÂÃÂ¾ÃÂ³ÃÂÃÂ°ÃÂÃÂ¸ÃÂ¸, AI-ÃÂ³ÃÂµÃÂ½ÃÂµÃÂÃÂ°ÃÂÃÂ¸ÃÂ¸ ÃÂ¸ ÃÂ¼ÃÂ¾ÃÂÃÂÃÂ½-ÃÂ´ÃÂ¸ÃÂ·ÃÂ°ÃÂ¹ÃÂ½ÃÂ° Ã¢ÂÂ ÃÂÃÂ¾ÃÂ·ÃÂ´ÃÂ°ÃÂ ÃÂ¾ÃÂ±ÃÂÃÂ°ÃÂ·ÃÂ, ÃÂºÃÂ¾ÃÂÃÂ¾ÃÂÃÂÃÂµ <strong>ÃÂ·ÃÂ°ÃÂ¿ÃÂ¾ÃÂ¼ÃÂ¸ÃÂ½ÃÂ°ÃÂÃÂÃÂÃÂ</strong>.</p>
-    <p class="about-desc" style="margin-top:16px;">ÃÂÃÂ¾ÃÂ»ÃÂµÃÂµ <strong>5 ÃÂ»ÃÂµÃÂ</strong> ÃÂ ÃÂ³ÃÂ»ÃÂ¾ÃÂ±ÃÂ°ÃÂ»ÃÂÃÂ½ÃÂÃÂ¼ÃÂ¸ ÃÂ±ÃÂÃÂµÃÂ½ÃÂ´ÃÂ°ÃÂ¼ÃÂ¸. ÃÂÃÂ¾ÃÂ»ÃÂ½ÃÂÃÂ¹ ÃÂÃÂ¸ÃÂºÃÂ»: ÃÂ¾ÃÂ ÃÂºÃÂ¾ÃÂ½ÃÂÃÂµÃÂ¿ÃÂÃÂ¸ÃÂ¸ ÃÂ´ÃÂ¾ ÃÂÃÂ¸ÃÂ½ÃÂ°ÃÂ»ÃÂÃÂ½ÃÂ¾ÃÂ³ÃÂ¾ ÃÂºÃÂ°ÃÂ´ÃÂÃÂ°.</p>
-    <p class="about-location">Based in <span>Bali, Indonesia</span> ÃÂ· Available worldwide</p>
+    <p class="section-label" data-en="About" data-ru="О себе">About</p>
+    <h2 class="section-title" data-en="Where <em>cinema</em><br>meets technology" data-ru="Где <em>кино</em><br>встречает технологии">Where <em>cinema</em><br>meets technology</h2>
+<p class="about-desc" data-en="A director by training, a visual architect by calling. I work at the intersection of cinematography, AI generation and motion design — creating images that <strong>stick</strong>." data-ru="Режиссёр по образованию, <strong>визуальный архитектор</strong> по призванию. Работаю на стыке кинематографа, AI-генерации и моушн-дизайна — создаю образы, которые <strong>запоминаются</strong>.">A director by training, a visual architect by calling. I work at the intersection of cinematography, AI generation and motion design — creating images that <strong>stick</strong>.</p>
+<p class="about-desc" data-en="More than <strong>5 years</strong> with global brands. Full cycle: from concept to final frame." data-ru="Более <strong>5 лет</strong> с глобальными брендами. Полный цикл: от концепции до финального кадра.">More than <strong>5 years</strong> with global brands. Full cycle: from concept to final frame.</p>
+<p class="about-location" data-en="Based in <span>Bali, Indonesia</span> · Available worldwide" data-ru="Базируюсь на <span>Бали, Индонезия</span> · Работаю по всему миру">Based in <span>Bali, Indonesia</span> · Available worldwide</p>
   </div>
   <div class="about-stats reveal" style="transition-delay:0.2s">
-    <div class="stat"><div class="stat-number">5+</div><div class="stat-label">Years of Experience</div></div>
-    <div class="stat"><div class="stat-number">50+</div><div class="stat-label">Projects Completed</div></div>
-    <div class="stat"><div class="stat-number">2</div><div class="stat-label">Creative Universes</div></div>
-    <div class="stat"><div class="stat-number">Ã¢ÂÂ</div><div class="stat-label">Creative Ambition</div></div>
+    <div class="stat"><div class="stat-number">5+</div><div class="stat-label" data-en="Years of Experience" data-ru="лет опыта">Years of Experience</div></div>
+    <div class="stat"><div class="stat-number">50+</div><div class="stat-label" data-en="Projects Completed" data-ru="проектов завершено">Projects Completed</div></div>
+    <div class="stat"><div class="stat-number">2</div><div class="stat-label" data-en="Creative Universes" data-ru="креативные вселенные">Creative Universes</div></div>
+    <div class="stat"><div class="stat-number">∞</div><div class="stat-label" data-en="Creative Ambition" data-ru="креативные амбиции">Creative Ambition</div></div>
   </div>
 </section>
 <section id="services">
   <div class="reveal">
-    <p class="section-label">What I do</p>
-    <h2 class="section-title">Full-cycle <em>creative</em><br>production</h2>
+    <p class="section-label" data-en="What I do" data-ru="Что я делаю">What I do</p>
+    <h2 class="section-title" data-en="Full-cycle <em>creative</em><br>production" data-ru="Креативный продакшн<br>полного <em>цикла</em>">Full-cycle <em>creative</em><br>production</h2>
   </div>
   <div class="services-grid">
-    <div class="service-card reveal"><div class="service-num">01</div><h3 class="service-title">AI Creative &<br>Art Direction</h3><p class="service-desc">ÃÂÃÂµÃÂ¹ÃÂÃÂ¾-ÃÂ²ÃÂ¸ÃÂ·ÃÂÃÂ°ÃÂ»ÃÂ, ÃÂºÃÂ¾ÃÂ½ÃÂÃÂµÃÂ¿ÃÂÃÂ¸ÃÂ¸, brand identity ÃÂ¸ ÃÂ³ÃÂµÃÂ½ÃÂµÃÂÃÂ°ÃÂÃÂ¸ÃÂ²ÃÂ½ÃÂ¾ÃÂµ ÃÂ¸ÃÂÃÂºÃÂÃÂÃÂÃÂÃÂ²ÃÂ¾. ÃÂ¡ÃÂ¾ÃÂ·ÃÂ´ÃÂ°ÃÂ AI-ÃÂºÃÂ¾ÃÂ½ÃÂÃÂµÃÂ½ÃÂ, ÃÂºÃÂ¾ÃÂÃÂ¾ÃÂÃÂÃÂ¹ ÃÂ²ÃÂÃÂ³ÃÂ»ÃÂÃÂ´ÃÂ¸ÃÂ ÃÂºÃÂ°ÃÂº ÃÂºÃÂ¸ÃÂ½ÃÂ¾.</p></div>
-    <div class="service-card reveal" style="transition-delay:0.15s"><div class="service-num">02</div><h3 class="service-title">Motion Design &<br>Video Editing</h3><p class="service-desc">ÃÂÃÂ¾ÃÂ¼ÃÂ¼ÃÂµÃÂÃÂÃÂµÃÂÃÂºÃÂ¸ÃÂ¹ ÃÂ²ÃÂ¸ÃÂ´ÃÂµÃÂ¾ÃÂ¿ÃÂÃÂ¾ÃÂ´ÃÂ°ÃÂºÃÂÃÂ½ ÃÂ¿ÃÂ¾ÃÂ»ÃÂ½ÃÂ¾ÃÂ³ÃÂ¾ ÃÂÃÂ¸ÃÂºÃÂ»ÃÂ°: ÃÂ¾ÃÂ ÃÂ¸ÃÂ´ÃÂµÃÂ¸ ÃÂ´ÃÂ¾ ÃÂ¿ÃÂ¾ÃÂÃÂÃÂ¿ÃÂÃÂ¾ÃÂ´ÃÂ°ÃÂºÃÂÃÂ½ÃÂ°. ÃÂÃÂ¾ÃÂÃÂÃÂ½-ÃÂ³ÃÂÃÂ°ÃÂÃÂ¸ÃÂºÃÂ°, ÃÂÃÂµÃÂºÃÂ»ÃÂ°ÃÂ¼ÃÂ°, Reels.</p></div>
-    <div class="service-card reveal" style="transition-delay:0.3s"><div class="service-num">03</div><h3 class="service-title">Drone Cinematography<br>& Production</h3><p class="service-desc">ÃÂÃÂÃÂÃÂ¾ÃÂÃÂÃÂÃÂ¼ÃÂºÃÂ° ÃÂ½ÃÂ° ÃÂÃÂ°ÃÂ»ÃÂ¸ ÃÂ¸ ÃÂ¿ÃÂ¾ ÃÂ²ÃÂÃÂµÃÂ¼ÃÂ ÃÂ¼ÃÂ¸ÃÂÃÂ. ÃÂÃÂ¸ÃÂ½ÃÂµÃÂ¼ÃÂ°ÃÂÃÂ¾ÃÂ³ÃÂÃÂ°ÃÂÃÂ¸ÃÂÃÂµÃÂÃÂºÃÂ¸ÃÂµ ÃÂºÃÂ°ÃÂ´ÃÂÃÂ ÃÂ ÃÂ²ÃÂ¾ÃÂ·ÃÂ´ÃÂÃÂÃÂ° ÃÂ´ÃÂ»ÃÂ ÃÂÃÂµÃÂºÃÂ»ÃÂ°ÃÂ¼ÃÂ ÃÂ¸ ÃÂ±ÃÂÃÂµÃÂ½ÃÂ´ÃÂ¸ÃÂ½ÃÂ³ÃÂ°.</p></div>
-    <div class="service-card reveal" style="transition-delay:0.45s"><div class="service-num">04</div><h3 class="service-title">Creative Concept<br>Development</h3><p class="service-desc">ÃÂ ÃÂ°ÃÂ·ÃÂÃÂ°ÃÂ±ÃÂ¾ÃÂÃÂºÃÂ° ÃÂºÃÂÃÂµÃÂ°ÃÂÃÂ¸ÃÂ²ÃÂ½ÃÂÃÂ ÃÂºÃÂ¾ÃÂ½ÃÂÃÂµÃÂ¿ÃÂÃÂ¸ÃÂ¹ ÃÂ´ÃÂ»ÃÂ ÃÂ±ÃÂÃÂµÃÂ½ÃÂ´ÃÂ¾ÃÂ². ÃÂÃÂ ÃÂ±ÃÂÃÂ¸ÃÂÃÂ° ÃÂ´ÃÂ¾ ÃÂ²ÃÂ¸ÃÂ·ÃÂÃÂ°ÃÂ»ÃÂÃÂ½ÃÂ¾ÃÂ³ÃÂ¾ ÃÂÃÂ·ÃÂÃÂºÃÂ° ÃÂ¸ storytelling.</p></div>
-    <div class="service-card reveal" style="transition-delay:0.6s"><div class="service-num">05</div><h3 class="service-title">Sound Design &<br>Post-Production</h3><p class="service-desc">ÃÂ¡ÃÂ°ÃÂÃÂ½ÃÂ´-ÃÂ´ÃÂ¸ÃÂ·ÃÂ°ÃÂ¹ÃÂ½, ÃÂÃÂ¸ÃÂ½ÃÂ°ÃÂ»ÃÂÃÂ½ÃÂÃÂ¹ ÃÂ¿ÃÂ¾ÃÂÃÂÃÂ¿ÃÂÃÂ¾ÃÂ´ÃÂ°ÃÂºÃÂÃÂ½ ÃÂ¸ ÃÂ·ÃÂ²ÃÂÃÂºÃÂ¾ÃÂ²ÃÂ¾ÃÂµ ÃÂ¾ÃÂÃÂ¾ÃÂÃÂ¼ÃÂ»ÃÂµÃÂ½ÃÂ¸ÃÂµ ÃÂ¿ÃÂÃÂ¾ÃÂµÃÂºÃÂÃÂ¾ÃÂ². ÃÂÃÂÃÂ·ÃÂÃÂºÃÂ°ÃÂ»ÃÂÃÂ½ÃÂ¾ÃÂµ ÃÂÃÂÃÂÃÂÃÂ Ã¢ÂÂ ÃÂÃÂ°ÃÂÃÂÃÂ ÃÂ¿ÃÂÃÂ¾ÃÂÃÂµÃÂÃÂÃÂ¸ÃÂ¸.</p></div>
-    <div class="service-card reveal" style="transition-delay:0.75s"><div class="service-num">06</div><h3 class="service-title">ARKONA Factory<br>Studio</h3><p class="service-desc">ÃÂÃÂÃÂ´ÃÂÃÂÃÂµÃÂµ: ÃÂÃÂÃÂÃÂ´ÃÂ¸ÃÂ ÃÂ´ÃÂ¸ÃÂ·ÃÂ°ÃÂ¹ÃÂ½ÃÂ° ÃÂ¸ ÃÂ½ÃÂµÃÂ¹ÃÂÃÂ¾ÃÂºÃÂÃÂµÃÂ°ÃÂÃÂ¾ÃÂÃÂ¾ÃÂ². ÃÂÃÂÃÂ¾ÃÂÃÂÃÂÃÂ°ÃÂ½ÃÂÃÂÃÂ²ÃÂ¾, ÃÂ³ÃÂ´ÃÂµ AI-ÃÂÃÂµÃÂÃÂ½ÃÂ¾ÃÂ»ÃÂ¾ÃÂ³ÃÂ¸ÃÂ¸ ÃÂ²ÃÂÃÂÃÂÃÂµÃÂÃÂ°ÃÂÃÂÃÂÃÂ ÃÂ ÃÂÃÂµÃÂ»ÃÂ¾ÃÂ²ÃÂµÃÂÃÂµÃÂÃÂºÃÂ¸ÃÂ¼ ÃÂ³ÃÂµÃÂ½ÃÂ¸ÃÂµÃÂ¼.</p></div>
+<div class="service-card reveal" style="transition-delay:0s"><div class="service-num">01</div><h3 class="service-title" data-en="AI Creative &amp;<br>Art Direction" data-ru="AI-креатив и<br>арт-дирекшн">AI Creative &amp;<br>Art Direction</h3><p class="service-desc" data-en="Neuro-visuals, concepts, brand identity and generative art. I create AI content that looks like cinema." data-ru="Нейро-визуал, концепции, brand identity и генеративное искусство. Создаю AI-контент, который выглядит как кино.">Neuro-visuals, concepts, brand identity and generative art. I create AI content that looks like cinema.</p></div>
+<div class="service-card reveal" style="transition-delay:0.15s"><div class="service-num">02</div><h3 class="service-title" data-en="Motion Design &amp;<br>Video Editing" data-ru="Моушн-дизайн и<br>видеомонтаж">Motion Design &amp;<br>Video Editing</h3><p class="service-desc" data-en="Full-cycle commercial video production: from idea to post. Motion graphics, ads, Reels." data-ru="Коммерческий видеопродакшн полного цикла: от идеи до постпродакшна. Моушн-графика, реклама, Reels.">Full-cycle commercial video production: from idea to post. Motion graphics, ads, Reels.</p></div>
+<div class="service-card reveal" style="transition-delay:0.3s"><div class="service-num">03</div><h3 class="service-title" data-en="Drone Cinematography<br>&amp; Production" data-ru="Аэросъёмка<br>и продакшн">Drone Cinematography<br>&amp; Production</h3><p class="service-desc" data-en="Aerial filming in Bali and worldwide. Cinematic drone shots for ads and branding." data-ru="Аэросъёмка на Бали и по всему миру. Кинематографичные кадры с воздуха для рекламы и брендинга.">Aerial filming in Bali and worldwide. Cinematic drone shots for ads and branding.</p></div>
+<div class="service-card reveal" style="transition-delay:0.45s"><div class="service-num">04</div><h3 class="service-title" data-en="Creative Concept<br>Development" data-ru="Разработка<br>креативных концепций">Creative Concept<br>Development</h3><p class="service-desc" data-en="Creative concept development for brands. From brief to visual language and storytelling." data-ru="Разработка креативных концепций для брендов. От брифа до визуального языка и storytelling.">Creative concept development for brands. From brief to visual language and storytelling.</p></div>
+<div class="service-card reveal" style="transition-delay:0.6s"><div class="service-num">05</div><h3 class="service-title" data-en="Sound Design &amp;<br>Post-Production" data-ru="Саунд-дизайн и<br>постпродакшн">Sound Design &amp;<br>Post-Production</h3><p class="service-desc" data-en="Sound design, final post-production and audio for projects. Musical taste is part of the process." data-ru="Саунд-дизайн, финальный постпродакшн и звуковое оформление проектов. Музыкальное чутьё — часть процесса.">Sound design, final post-production and audio for projects. Musical taste is part of the process.</p></div>
+<div class="service-card reveal" style="transition-delay:0.75s"><div class="service-num">06</div><h3 class="service-title" data-en="ARKONA Factory<br>Studio" data-ru="Студия<br>ARKONA Factory">ARKONA Factory<br>Studio</h3><p class="service-desc" data-en="A studio of design and neuro-creators of the future. A space where AI meets human genius." data-ru="Студия дизайна и нейрокреаторов будущего. Пространство, где AI-технологии встречаются с человеческим гением.">A studio of design and neuro-creators of the future. A space where AI meets human genius.</p></div>
   </div>
 </section>
 <section id="clients">
   <div class="clients-header reveal">
-    <p class="section-label">Trusted by global brands</p>
-    <h2 class="section-title">Clients who <em>believe</em><br>in bold vision</h2>
+    <p class="section-label" data-en="Trusted by global brands" data-ru="Нам доверяют мировые бренды">Trusted by global brands</p>
+    <h2 class="section-title" data-en="Clients who believe<br>in <em>bold</em> vision" data-ru="Клиенты, верящие<br>в <em>смелые</em> идеи">Clients who believe<br>in <em>bold</em> vision</h2>
   </div>
   <div class="ticker-wrap">
     <div class="ticker">
@@ -422,39 +435,39 @@
 
   <div class="names-wrap">
     <div class="names-ticker">
-      <div class="name-item">Reebok</div><div class="name-item">Nike</div><div class="name-item">hh</div><div class="name-item">Hyundai</div><div class="name-item">Profi</div><div class="name-item">Amway</div><div class="name-item">TOUS</div><div class="name-item">KYNSI</div><div class="name-item">Barni</div><div class="name-item">ÃÂ¡ÃÂ±ÃÂµÃÂ</div>
-      <div class="name-item">Reebok</div><div class="name-item">Nike</div><div class="name-item">hh</div><div class="name-item">Hyundai</div><div class="name-item">Profi</div><div class="name-item">Amway</div><div class="name-item">TOUS</div><div class="name-item">KYNSI</div><div class="name-item">Barni</div><div class="name-item">ÃÂ¡ÃÂ±ÃÂµÃÂ</div>
+      <div class="name-item">Reebok</div><div class="name-item">Nike</div><div class="name-item">hh</div><div class="name-item">Hyundai</div><div class="name-item">Profi</div><div class="name-item">Amway</div><div class="name-item">TOUS</div><div class="name-item">KYNSI</div><div class="name-item">Barni</div><div class="name-item">СБЕР</div>
+      <div class="name-item">Reebok</div><div class="name-item">Nike</div><div class="name-item">hh</div><div class="name-item">Hyundai</div><div class="name-item">Profi</div><div class="name-item">Amway</div><div class="name-item">TOUS</div><div class="name-item">KYNSI</div><div class="name-item">Barni</div><div class="name-item">СБЕР</div>
     </div>
   </div>
 </section>
 
 <section id="contact">
   <div class="contact-text reveal">
-    <p class="section-label">Contact</p>
-    <h2 class="section-title">Let's build<br>something <em>bold</em></h2>
-    <p class="contact-desc">ÃÂ ÃÂ°ÃÂ±ÃÂ¾ÃÂÃÂ°ÃÂ ÃÂ¿ÃÂÃÂ¾ÃÂµÃÂºÃÂÃÂ½ÃÂ¾ ÃÂ¸ ÃÂ¾ÃÂÃÂºÃÂÃÂÃÂ ÃÂº ÃÂ´ÃÂ¾ÃÂ»ÃÂ³ÃÂ¾ÃÂÃÂÃÂ¾ÃÂÃÂ½ÃÂ¾ÃÂ¼ÃÂ ÃÂÃÂ¾ÃÂÃÂÃÂÃÂ´ÃÂ½ÃÂ¸ÃÂÃÂµÃÂÃÂÃÂ²ÃÂ. ÃÂÃÂ±ÃÂÃÂÃÂ´ÃÂ¸ÃÂ¼ ÃÂ²ÃÂ°ÃÂÃÂ¸ ÃÂ·ÃÂ°ÃÂ´ÃÂ°ÃÂÃÂ¸, ÃÂÃÂ¾ÃÂÃÂ¼ÃÂ°ÃÂ ÃÂÃÂ°ÃÂ±ÃÂ¾ÃÂÃÂ ÃÂ¸ ÃÂÃÂÃÂ»ÃÂ¾ÃÂ²ÃÂ¸ÃÂ.</p>
+    <p class="section-label" data-en="Contact" data-ru="Контакты">Contact</p>
+    <h2 class="section-title" data-en="Let's build<br>something <em>bold</em>" data-ru="Создадим<br>что-то <em>смелое</em>">Let's build<br>something <em>bold</em></h2>
+<p class="contact-desc" data-en="I work on a project basis and am open to long-term collaboration. Let's discuss your task, format and terms." data-ru="Работаю проектно и открыт к долгосрочному сотрудничеству. Обсудим вашу задачу, формат работы и условия.">I work on a project basis and am open to long-term collaboration. Let's discuss your task, format and terms.</p>
     <div class="contact-links">
       <a href="https://www.instagram.com/arkonafactory" target="_blank" class="contact-link">
-        <div><div class="link-platform">Instagram ÃÂ· AI Creative</div><div class="link-handle">@arkonafactory</div></div>
-        <span class="link-arrow">Ã¢ÂÂ</span>
+<div><div class="link-platform" data-en="Instagram · AI Creative" data-ru="Instagram · AI-креатив">Instagram · AI Creative</div><div class="link-handle">@arkonafactory</div></div>
+        <span class="link-arrow">→</span>
       </a>
       <a href="https://www.instagram.com/arkomotion" target="_blank" class="contact-link">
-        <div><div class="link-platform">Instagram ÃÂ· Motion</div><div class="link-handle">@arkomotion</div></div>
-        <span class="link-arrow">Ã¢ÂÂ</span>
+<div><div class="link-platform" data-en="Instagram · Motion" data-ru="Instagram · Моушн">Instagram · Motion</div><div class="link-handle">@arkomotion</div></div>
+        <span class="link-arrow">→</span>
       </a>
     </div>
   </div>
   <div class="contact-form-side reveal" style="transition-delay:0.2s">
-    <h3 class="form-title">Send a message</h3>
-    <div class="form-group"><label>Your Name</label><input type="text" placeholder="How should I call you?"></div>
-    <div class="form-group"><label>Email</label><input type="email" placeholder="your@email.com"></div>
-    <div class="form-group"><label>Project</label><textarea placeholder="Tell me about your project..."></textarea></div>
-    <button class="form-submit">Send Message Ã¢ÂÂ</button>
+    <h3 class="form-title"data-en="Send a message" data-ru="Напишите сообщение">Send a message</h3>
+    <div class="form-group"><label data-en="Your Name" data-ru="Ваше имя">Your Name</label><input type="text" placeholder="How should I call you?" data-en-ph="How should I call you?" data-ru-ph="Как к вам обращаться?"></div>
+    <div class="form-group"><label data-en="Email" data-ru="Email">Email</label><input type="email" placeholder="your@email.com" data-en-ph="your@email.com" data-ru-ph="ваш@email.com"></div>
+    <div class="form-group"><label data-en="Project" data-ru="Проект">Project</label><textarea placeholder="Tell me about your project..." data-en-ph="Tell me about your project..." data-ru-ph="Расскажите о проекте..."></textarea></div>
+<button class="form-submit" data-en="Send Message →" data-ru="Отправить →">Send Message →</button>
   </div>
 </section>
 <footer>
   <div class="footer-logo">ARK<span>O</span>NA</div>
-  <div class="footer-copy">ÃÂ© 2025 Arko ÃÂ· All rights reserved</div>
+<div class="footer-copy" data-en="© 2025 Arko · All rights reserved" data-ru="© 2025 Arko · Все права защищены">© 2025 Arko · All rights reserved</div>
   <div class="footer-made">Bali, Indonesia</div>
 </footer>
 <script>
@@ -475,6 +488,24 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.12 });
   reveals.forEach(r => observer.observe(r));
+</script>
+<script>
+(function(){
+  function arkoSetLang(lang){
+    document.querySelectorAll('[data-en][data-ru]').forEach(function(el){ var v=el.getAttribute('data-'+lang); if(v!=null) el.innerHTML=v; });
+    document.querySelectorAll('[data-en-ph][data-ru-ph]').forEach(function(el){ el.placeholder=el.getAttribute('data-'+lang+'-ph'); });
+    document.documentElement.lang=lang;
+    document.querySelectorAll('.lang-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.lang===lang); });
+    try{ localStorage.setItem('arko_lang',lang); }catch(e){}
+  }
+  document.addEventListener('click', function(e){
+    var lb=e.target.closest('.lang-btn'); if(lb){ arkoSetLang(lb.dataset.lang); return; }
+    if(e.target.closest('.nav-burger')){ document.querySelector('.nav-links').classList.toggle('open'); return; }
+    if(e.target.closest('.nav-links a')){ var nl=document.querySelector('.nav-links'); if(nl) nl.classList.remove('open'); }
+  });
+  var saved='en'; try{ saved=localStorage.getItem('arko_lang')||'en'; }catch(e){}
+  arkoSetLang(saved);
+})();
 </script>
 </body>
 </html>
