@@ -360,11 +360,25 @@
 #showreel .sr-name{font:700 21px/1.15 'Space Grotesk',sans-serif;color:#fff;letter-spacing:-.01em}
 #showreel .sr-desc{color:rgba(255,255,255,.7);font-size:13.5px;line-height:1.5;max-height:0;opacity:0;overflow:hidden;transition:max-height .5s,opacity .5s,margin .5s}
 #showreel .sr-card:hover .sr-desc{max-height:60px;opacity:1;margin-top:9px}
-#showreel .sr-card .sr-photo-scroll{position:absolute;inset:0;overflow:hidden}
-#showreel .sr-card .sr-photo-track{display:flex;flex-direction:column;animation:srPhotoScroll 32s linear infinite}
-#showreel .sr-card .sr-photo-track img{width:100%;aspect-ratio:9/13;object-fit:cover;display:block;flex:none}
+#showreel .sr-card .sr-photo-scroll{position:absolute;inset:0;overflow:hidden;cursor:pointer}
+#showreel .sr-card .sr-photo-track{display:flex;flex-direction:row;height:100%;width:max-content;animation:srPhotoSlide 26s cubic-bezier(.45,0,.55,1) infinite}
+#showreel .sr-card .sr-photo-track img{height:100%;width:auto;aspect-ratio:9/13;object-fit:cover;display:block;flex:none;animation:srPhotoZoom 6s ease-in-out infinite alternate}
 #showreel .sr-card:hover .sr-photo-track{animation-play-state:paused}
-@keyframes srPhotoScroll{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+#showreel .sr-card:hover .sr-photo-track img{animation-play-state:paused}
+@keyframes srPhotoSlide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes srPhotoZoom{from{transform:scale(1)}to{transform:scale(1.12)}}
+.ai-lightbox{position:fixed;inset:0;z-index:999;background:rgba(5,5,8,.92);backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s;padding:40px 20px}
+.ai-lightbox.open{opacity:1;visibility:visible}
+.ai-lightbox-inner{max-width:1100px;width:100%;max-height:88vh;overflow-y:auto;position:relative;background:linear-gradient(180deg,rgba(24,24,28,.85),rgba(10,10,12,.85));border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:44px}
+.ai-lightbox-close{position:absolute;top:18px;right:18px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:#fff;font-size:20px;line-height:38px;text-align:center;cursor:pointer;transition:.3s}
+.ai-lightbox-close:hover{background:#3B4FE4;border-color:#3B4FE4;transform:rotate(90deg)}
+.ai-lightbox-head{text-align:center;margin-bottom:30px}
+.ai-lightbox-tag{color:#8B5CF6;font:700 12px/1 'Space Grotesk',sans-serif;letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px}
+.ai-lightbox-head h3{font:700 28px/1.2 'Space Grotesk',sans-serif;color:#fff;margin:0}
+.ai-lightbox-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.ai-lightbox-grid img{width:100%;aspect-ratio:9/13;object-fit:cover;border-radius:14px;display:block;transition:transform .5s}
+.ai-lightbox-grid img:hover{transform:scale(1.04)}
+@media(max-width:760px){.ai-lightbox-grid{grid-template-columns:repeat(2,1fr)}.ai-lightbox-inner{padding:24px}.ai-lightbox-head h3{font-size:22px}}
 @media(prefers-reduced-motion:reduce){#showreel *{animation:none!important}}
 </style>
 <section id="showreel">
@@ -523,6 +537,37 @@
   });
   var saved='en'; try{ saved=localStorage.getItem('arko_lang')||'en'; }catch(e){}
   arkoSetLang(saved);
+})();
+</script>
+<div class="ai-lightbox" id="aiLightbox" aria-hidden="true">
+  <div class="ai-lightbox-inner">
+    <button class="ai-lightbox-close" id="aiLightboxClose" aria-label="Close">&times;</button>
+    <div class="ai-lightbox-head">
+      <p class="ai-lightbox-tag">AI Photo</p>
+      <h3>Online Photo Session — Gallery</h3>
+    </div>
+    <div class="ai-lightbox-grid">
+      <img src="neuro-car.jpg" alt="AI photo session - car">
+      <img src="neuro-jet.jpg" alt="AI photo session - private jet">
+      <img src="neuro-jet2.jpg" alt="AI photo session - private jet 2">
+      <img src="neuro-latex.jpg" alt="AI photo session - studio">
+      <img src="neuro-sunset.jpg" alt="AI photo session - sunset">
+      <img src="neuro-horses.jpg" alt="AI photo session - horses">
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var card = document.querySelector('#showreel .sr-card[data-cat="ai"]');
+  var lb = document.getElementById('aiLightbox');
+  var closeBtn = document.getElementById('aiLightboxClose');
+  if(!lb) return;
+  function openLb(){ lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function closeLb(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  if(card){ card.addEventListener('click', openLb); }
+  if(closeBtn){ closeBtn.addEventListener('click', closeLb); }
+  lb.addEventListener('click', function(e){ if(e.target === lb) closeLb(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLb(); });
 })();
 </script>
 </body>
