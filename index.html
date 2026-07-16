@@ -580,8 +580,8 @@
     var u2 = dedupe(photos2);
     if(u2.length){
       var lg = document.documentElement.lang === 'ru' ? 'ru' : 'en';
-      var l1 = lg==='ru' ? 'Первая девушка' : 'First Model';
-      var l2 = lg==='ru' ? 'Вторая девушка' : 'Second Model';
+      var l1 = 'Lara';
+      var l2 = 'Monica';
       grid.innerHTML = '<div class="ai-lightbox-group-label">'+l1+'</div><div class="ai-lightbox-grid-sub">'+imgs(u1)+'</div><div class="ai-lightbox-group-label">'+l2+'</div><div class="ai-lightbox-grid-sub">'+imgs(u2)+'</div>';
     } else {
       grid.innerHTML = imgs(u1);
